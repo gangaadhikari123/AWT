@@ -1,45 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
-    <tytle>Calculator</tytle>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    .buttons{
-        display:flex;
-        gap:4xp;
-        margine:100;
+    <head>
+        <meta charaset="UFT-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title >Simple calculator</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="ca;culator">
+            <input type="text" id="display" class="display" readonly>
+            <div class="buttons">
+                <div><button onclick="appendvalue('7')">7</button>
+                <button onclick="appendvalue('8')">8</button>
+                <button onclick="appendvalue('9')">9</button>
+                <button onclick="appendvalue('/')">/</button>
+                </div>
 
-    }
-    <div> <h4 style="margin10"></h4></div>
-    <div> Answer</div>
-    <div class="buttons">
-     
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
+               <div>
+                 <button onclick="appendValue('4')">4</button>
+                <button onclick="appendValue('5')">5</button>
+                <button onclick="appendValue('6')">6</button>
+                <button onclick="appendValue('*')">*</button></div>
+           
+                
+                <div><button onclick="appendValue('1')">1</button>
+                <button onclick="appendValue('2')">2</button>
+                <button onclick="appendValue('3')">3</button>
+                <button onclick="appendValue('-')">-</button>
+                </div>
+      
+                 <div> <button onclick="appendValue('0')">0</button>
+                <button onclick="appendValue('.')">.</button>
+                 <button onclick="clearDisplay()">C</button>
+                <button onclick="appendValue('+')">+</button>
+                </div>
+    
+                 <button class="equal" onclick="calculate()">=</button>
     </div>
-    <div class="buttons">
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-    </div>
-    <div class="buttons">
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-    </div>
-    <div class="buttons">
-        <button>-</button>
-        <button>+</button>
-        <button>=</button>
-    </div>
-    <p>This is about something example</p>
-   <!--<a href="http://www.google.com"> Normal Page</a> -->
- <!--<img scr="/home/ganga/Downloads/IMG_3720.HEIC"> -->
-
-</body>
+        </div>
+        <script>
+            function appendValue(val){
+                document.getElementById('display').value+=val;
+            }
+            function clearDisplay(){
+                document.getElementById('display').value='';
+            }
+            function calculate(){
+                try{
+                    document.getElementById('display').value=eval(document.getElementById('display').value);
+                }catch{
+                    document.getElementById('display').value='Error';
+                }
+            }
+        </script>
+    </body>
 </html>
