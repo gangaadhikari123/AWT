@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quotes</title>
+</head>
+<body>
+  <h1>Quotes</h1>
+  <ul id="quote-list"></ul>
+
+  <form id="quote-form">
+    <input type="text" id="quote-input" placeholder="Enter a new quote" required />
+    <button type="submit">Add Quote</button>
+  </form>
+
+  <script>
+    async function fetchQuotes() {
+      const res = await fetch('/api/quotes');
+      const quotes = await res.json();
+      const list = document.getElementById('quote-list');
+      list.innerHTML = '';
+      quotes.forEach(q => {
+        const li = document.createElement('li');
+        li.textContent = q.text;
+        list.appendChild(li);
+      });
+    }
+
+    document.getElementById('quote-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const input = document.getElementById('quote-input');
+      await fetch('/api/quotes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: input.value })
+      });
+      input.value = '';
+      fetchQuotes();
+    });
+
+    fetchQuotes();
+  </script>
+</body>
+</html>
