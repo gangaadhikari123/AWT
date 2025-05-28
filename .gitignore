@@ -1,1 +1,6 @@
 node_modules/
+
+.env
+**generated/**
+backend/generated/**
+project-1/generate/**
